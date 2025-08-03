@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: projeto1 # Define o namespace
+spec:
+  replicas: 2 # Número de réplicas
+  selector:
+    matchLabels:
+      app: backend # Seleciona o app backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: <SEU_DOCKERHUB>/backend:1.0 # Imagem do backend
+        ports:
+        - containerPort: 8080 # Porta do backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: projeto1
+spec:
+  selector:
+    app: backend # Seleciona o app backend
+  ports:
+    - port: 8080 # Porta exposta
+  type: ClusterIP # Tipo de serviço
