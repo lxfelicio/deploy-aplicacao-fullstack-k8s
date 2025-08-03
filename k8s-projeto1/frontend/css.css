@@ -1,0 +1,15 @@
+body {
+  font-family: Arial, sans-serif; /* Fonte do corpo */
+  width: 600px; /* Largura do formulário */
+  margin: auto; /* Centraliza o formulário */
+  padding-top: 40px; /* Espaço superior */
+}
+input, textarea {
+  display: block; /* Exibe como bloco */
+  width: 100%; /* Largura total */
+  margin-bottom: 15px; /* Espaço inferior */
+  padding: 10px; /* Espaçamento interno */
+}
+button {
+  padding: 10px 20px; /* Espaçamento interno do botão */
+}
