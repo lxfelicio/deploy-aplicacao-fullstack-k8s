@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: projeto1 # Define o namespace
+spec:
+  replicas: 2 # Número de réplicas
+  selector:
+    matchLabels:
+      app: frontend # Seleciona o app frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: <SEU_DOCKERHUB>/frontend:1.0 # Imagem do frontend
+        ports:
+        - containerPort: 80 # Porta do frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: projeto1
+spec:
+  selector:
+    app: frontend # Seleciona o app frontend
+  ports:
+    - port: 80 # Porta exposta
+  type: LoadBalancer # Tipo de serviço
